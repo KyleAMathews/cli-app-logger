@@ -20,7 +20,7 @@ function aggregateData(logs) {
     if (!data[date][log.appName]) {
       data[date][log.appName] = 0;
     }
-    data[date][log.appName] += log.durationSeconds;
+    data[date][log.appName] += log.durationSeconds / 60;
   });
   return data;
 }
@@ -79,9 +79,9 @@ function displaySummaryTable(data, topApps) {
     });
     const avgDayTime = daysCounted > 0 ? weekTime / daysCounted : 0;
     console.log(
-      `${app}\t\t${todayTime.toPrecision(4)}\t\t${weekTime.toPrecision(
+      `${app}\t\t${(todayTime).toPrecision(4)}\t\t${(weekTime).toPrecision(
         4
-      )}\t\t${avgDayTime.toPrecision(4)}`
+      )}\t\t${(avgDayTime).toPrecision(4)}`
     );
   });
 }
